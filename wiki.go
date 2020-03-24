@@ -16,8 +16,8 @@ var root = flag.String("root", ".", "file system path")
 
 func main() {
 	http.Handle("/", http.FileServer(http.Dir("/home/houzzcart/houzzcart/backend/finalImage/")))
-	log.Println("Listening on 8081")
-	err := http.ListenAndServe(":8081", nil)
+	log.Println("Listening on 8080")
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe:", err)
 	}
