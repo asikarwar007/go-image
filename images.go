@@ -47,7 +47,7 @@ func redHandler(w http.ResponseWriter, r *http.Request) {
 	src, err := imaging.Open("/home/houzzcart/houzzcart/backend/finalImage" + r.URL.Path)
 	// src = imaging.Sharpen(src, 2)
 	if err != nil {
-		log.Fatalf("failed to open image: %v", err)
+		// log.Fatalf("failed to open image: %v", err)
 	} else {
 		if mode == "fill" {
 			src = imaging.Fill(src, width1, height1, imaging.Center, imaging.Lanczos)
