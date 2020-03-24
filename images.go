@@ -45,7 +45,7 @@ func redHandler(w http.ResponseWriter, r *http.Request) {
 	mode := r.URL.Query().Get("mode")
 
 	src, err := imaging.Open("/home/houzzcart/houzzcart/backend/finalImage" + r.URL.Path)
-	src = imaging.Sharpen(src, 2)
+	// src = imaging.Sharpen(src, 2)
 
 	if mode == "fill" {
 		src = imaging.Fill(src, width1, height1, imaging.Center, imaging.Lanczos)
