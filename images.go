@@ -46,7 +46,9 @@ func redHandler(w http.ResponseWriter, r *http.Request) {
 
 	src, err := imaging.Open("/home/houzzcart/houzzcart/backend/finalImage" + r.URL.Path)
 	// src = imaging.Sharpen(src, 2)
-
+	if err != nil {
+		log.Fatalf("failed to open image: %v", err)
+	}
 	if mode == "fill" {
 		src = imaging.Fill(src, width1, height1, imaging.Center, imaging.Lanczos)
 	}
@@ -63,15 +65,15 @@ func redHandler(w http.ResponseWriter, r *http.Request) {
 	// log.Printf(param1)
 	// log.Printf(height)
 	// log.Printf(quality)
-	if err != nil {
-		log.Fatalf("failed to open image: %v", err)
-	}
+
 	// src = imaging.Blur(src, 5)
 	// src = imaging.CropAnchor(src, 300, 300, imaging.Center)
 
 	var img image.Image = src
 	writeImageWithTemplate(w, &img)
 }
+
+// ImageTemplate mC h
 
 var ImageTemplate string = `<!DOCTYPE html>
 <html lang="en"><head></head>
