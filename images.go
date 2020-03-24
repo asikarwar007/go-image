@@ -43,7 +43,7 @@ func redHandler(w http.ResponseWriter, r *http.Request) {
 	height1, err := strconv.Atoi(height)
 	quality := r.URL.Query().Get("quality")
 	mode := r.URL.Query().Get("mode")
-
+	log.Printf("home/houzzcart/houzzcart/backend/finalImage" + r.URL.Path)
 	src, err := imaging.Open("/home/houzzcart/houzzcart/backend/finalImage" + r.URL.Path)
 	// src = imaging.Sharpen(src, 2)
 	if err != nil {
