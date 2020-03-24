@@ -48,29 +48,30 @@ func redHandler(w http.ResponseWriter, r *http.Request) {
 	// src = imaging.Sharpen(src, 2)
 	if err != nil {
 		log.Fatalf("failed to open image: %v", err)
-	}
-	if mode == "fill" {
-		src = imaging.Fill(src, width1, height1, imaging.Center, imaging.Lanczos)
-	}
-	if mode == "fit" {
-		src = imaging.Fit(src, width1, height1, imaging.Lanczos)
-	}
-	if mode == "" {
-		src = imaging.Fill(src, width1, height1, imaging.Center, imaging.Lanczos)
-	}
-	if quality != "" {
-		// quality = "80"
-		src = imaging.Resize(src, width1, height1, imaging.Lanczos)
-	}
-	// log.Printf(param1)
-	// log.Printf(height)
-	// log.Printf(quality)
+	} else {
+		if mode == "fill" {
+			src = imaging.Fill(src, width1, height1, imaging.Center, imaging.Lanczos)
+		}
+		if mode == "fit" {
+			src = imaging.Fit(src, width1, height1, imaging.Lanczos)
+		}
+		if mode == "" {
+			src = imaging.Fill(src, width1, height1, imaging.Center, imaging.Lanczos)
+		}
+		if quality != "" {
+			// quality = "80"
+			src = imaging.Resize(src, width1, height1, imaging.Lanczos)
+		}
+		// log.Printf(param1)
+		// log.Printf(height)
+		// log.Printf(quality)
 
-	// src = imaging.Blur(src, 5)
-	// src = imaging.CropAnchor(src, 300, 300, imaging.Center)
+		// src = imaging.Blur(src, 5)
+		// src = imaging.CropAnchor(src, 300, 300, imaging.Center)
 
-	var img image.Image = src
-	writeImageWithTemplate(w, &img)
+		var img image.Image = src
+		writeImageWithTemplate(w, &img)
+	}
 }
 
 // ImageTemplate mC h
